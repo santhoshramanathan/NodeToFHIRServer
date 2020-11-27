@@ -47,7 +47,7 @@ app.get('/Observation/:id', (req, res) => {
     
 	res.send(JSON.parse(body));
 });
-});/
+});
 
 
 app.post('/Observation', (req, res) => {
