@@ -1,8 +1,14 @@
 const express = require('express');
 var Request = require("request");
+const fetch = require('node-fetch');
+
 var username="fhiruser";
 var password="change-password";
 var auth = "Basic "+new Buffer(username + ":" + password).toString("base64");
+
+const headers = {
+	"Authorization" : auth, rejectUnauthorized: false, requestCert: true, agent: false
+}
 const app = express();
 
 app.get('/', (req, res) => {
@@ -25,6 +31,13 @@ app.get('/insurancePlan', (req, res) => {
 	res.send(JSON.parse(body));
 });
 });
+
+/*app.get('/insurancePlan', (req, res) => {
+	fetch( "https://150.238.99.51:9443/fhir-server/api/v4/Observation", { method: 'GET', headers: headers})
+  .then((res) => {
+     return res.json()
+});
+});*/
 
 app.post('/insurancePlan', (req, res) => {
 	  Request.post({
