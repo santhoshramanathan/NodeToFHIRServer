@@ -3,6 +3,7 @@ var Request = require("request");
 const fetch = require('node-fetch');
 var username="fhiruser";
 var password="change-password";
+var url = "https://150.238.99.51:9443/fhir-server/api/v4/";
 var auth = "Basic "+new Buffer(username + ":" + password).toString("base64");
 
 const headers = {
@@ -15,9 +16,9 @@ app.get('/', (req, res) => {
   res.send('Hello from App Engine!');
 });
 
-app.get('/Observation', (req, res) => {
+app.get('/:operation', (req, res) => {
   Request.get({
-	  url : "https://150.238.99.51:9443/fhir-server/api/v4/Observation",
+	  url : url+req.params.operation,
 	  headers : { "Authorization" : auth},
 	  rejectUnauthorized: false,
 	  requestCert: true,
@@ -32,9 +33,9 @@ app.get('/Observation', (req, res) => {
 });
 });
 
-app.get('/Observation/:id', (req, res) => {
+app.get('/:operation/:id', (req, res) => {
   Request.get({
-	  url : "https://150.238.99.51:9443/fhir-server/api/v4/Observation/"+req.params.id,
+	  url : url+req.params.operation+"/"+req.params.id,
 	  headers : { "Authorization" : auth},
 	  rejectUnauthorized: false,
 	  requestCert: true,
@@ -50,9 +51,9 @@ app.get('/Observation/:id', (req, res) => {
 });
 
 
-app.post('/Observation', (req, res) => {
+app.post('/:operation', (req, res) => {
 	  Request.post({
-		            url : "https://150.238.99.51:9443/fhir-server/api/v4/Observation",
+		            url : url+req.parms.operation,
 		            headers : { "Authorization" : auth},
 		            rejectUnauthorized: false,
 		            requestCert: true,
@@ -69,12 +70,10 @@ app.post('/Observation', (req, res) => {
 	  });
 });
 
-app.delete('/Observation/:id', (req, res) => {
+app.delete('/:operation/:id', (req, res) => {
 	
-	var id = req.params.id;
-	var url = "https://150.238.99.51:9443/fhir-server/api/v4/Observation/"+id;
   Request.delete({
-	  url : url,
+	  url : url+req.params.operation+"/"+req.params.id,
 	  headers : { "Authorization" : auth},
 	  rejectUnauthorized: false,
 	  requestCert: true,
