@@ -26,9 +26,9 @@ app.get('/insurancePlan', (req, res) => {
 });
 });
 
-/*app.post('/insurancePlan', (req, res) => {
+app.post('/insurancePlan', (req, res) => {
 	  Request.post({
-		            url : "https://localhost:9443/fhir-server/api/v4/Observation",
+		            url : "https://150.238.99.51:9443/fhir-server/api/v4/Observation",
 		            headers : { "Authorization" : auth},
 		            rejectUnauthorized: false,
 		            requestCert: true,
@@ -43,7 +43,7 @@ app.get('/insurancePlan', (req, res) => {
 		          res.send(JSON.parse(body));
 	  });
 });
-*/
+
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
