@@ -53,7 +53,7 @@ app.get('/:operation/:id', (req, res) => {
 
 app.post('/:operation', (req, res) => {
 	  Request.post({
-		            url : url+req.parms.operation,
+		            url : url+req.params.operation,
 		            headers : { "Authorization" : auth},
 		            rejectUnauthorized: false,
 		            requestCert: true,
