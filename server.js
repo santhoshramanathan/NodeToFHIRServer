@@ -1,6 +1,7 @@
 const express = require('express');
 var Request = require("request");
 const fetch = require('node-fetch');
+const cors=require('cors');
 var username="fhiruser";
 var password="change-password";
 var url = "https://150.238.99.51:9443/fhir-server/api/v4/";
@@ -11,6 +12,7 @@ const headers = {
 }
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Hello from App Engine!');
