@@ -45,6 +45,21 @@ app.get('/:operation', (req, res) => {
 	res.send(JSON.parse(body));
   });
   }
+  else if(req.query.name) {
+	 Request.get({
+	  url : url+req.params.operation+'?name='+req.query.name,
+	  headers : { "Authorization" : auth},
+	  rejectUnauthorized: false,
+	  requestCert: true,
+	  agent: false
+}, (error, response, body) => {
+    if(error) {
+		res.send(error);
+        return console.dir(error);
+    }
+	res.send(JSON.parse(body));
+  });
+  }
   else if(req.query.encounter)
   {
 	 Request.get({
