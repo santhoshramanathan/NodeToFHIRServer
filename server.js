@@ -4,7 +4,8 @@ const fetch = require('node-fetch');
 const cors=require('cors');
 var username="fhiruser";
 var password="change-password";
-var url = "https://150.238.99.51:9443/fhir-server/api/v4/";
+//var url = "https://150.238.99.51:9443/fhir-server/api/v4/";
+var url = "https://ibm-fhir-server-https-fhir.cp4i2021-tcs-jumpstart-6fb0b86391cd68c8282858623a1dddff-0000.eu-gb.containers.appdomain.cloud/fhir-server/api/v4/";
 var auth = "Basic "+new Buffer(username + ":" + password).toString("base64");
 
 
